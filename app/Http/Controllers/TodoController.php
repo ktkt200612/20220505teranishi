@@ -15,11 +15,19 @@ class TodoController extends Controller
     }
 
     
-    public function create(Request $request) {
-        $this->validate($request,Todo::$rules);//バリデーションの記述を入れる↑<br/>
-        //「$requestの内容を$contentに格納する」という記述を追加する↑
-        $content = $request;
+    public function create(Request $request)
+    {   $this->validate($request,Todo::$rules);//バリデーションの記述を入れる↑<br/>
+        $content = $request->all();//「$requestの内容を$contentに格納する」という記述を追加する↑
         Todo::create($content);
         return redirect('/');
     }
+
+
+    public function delete(Request $request) 
+    {
+        Todo::find($request->table)->delete();
+        return redirect('/');
+    } 
 }
+
+//$this->validate($request, Todo::$rules);

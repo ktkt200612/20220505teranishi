@@ -49,22 +49,31 @@
 <body>
   <div class="todo">
     <div class="ttl">Todo List</div>
-    <form action="/todo/create" method="GET">
+    <form action="/todo/create" method="POST">
     @csrf
       <input type="text" name="content" class="text1">
       <input type="submit" value="追加" class="text1-1">
     </form>
     <table>
-        <tr class="koumoku">
-            <th>作成日</th>
-            <th>タスク名</th>
-            <th>更新</th>
-            <th>削除</th>
-        </tr>
+      <tr class="koumoku">
+        <th>作成日</th>
+        <th>タスク名</th>
+        <th>更新</th>
+        <th>削除</th>
+      </tr>
+        @foreach ($items as $txt)
+      <tr>
+        <td>{{ $txt->created_at }}</td>
+        <td><input type="text" value="{{ $txt->content }}" ></td>
+        <td>
+          <form action="/todo/delete" method="POST">
+            @csrf
+            <button type="submit" name="delete" value="value">削除</button>
+          </form>
+        </td>
+        @endforeach
+      </tr>
     </table>
-  
-
   </div>
-  
 </body>
 </html>

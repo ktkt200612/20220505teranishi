@@ -14,5 +14,4 @@ class Todo extends Model
     ];
 
     public static $rules = array('content' => 'required|max:20',);
-
 }

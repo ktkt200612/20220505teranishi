@@ -15,11 +15,13 @@ class TodosTableSeeder extends Seeder
     public function run()
     {   
         $param = [
-            'content' => 'いいい'
+            'content' => 'ダミーデータ1',
+            'created_at' => '2002-05-11 13:17:44'
         ];
         DB::table('todos')->insert($param);
         $param = [
-            'content' => 'あああ'
+            'content' => 'ダミー2',
+            'created_at' => '2012-05-11 13:17:44'
         ];
         DB::table('todos')->insert($param);
     }
