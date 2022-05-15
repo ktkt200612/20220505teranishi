@@ -29,7 +29,7 @@ class TodoController extends Controller
         Todo::find($request->update);
         $this->validate($request, Todo::$rules);
         $update = $request->all();
-        unset($content['_token']);
+        unset($update['_token']);
         Todo::where('id',$request->update)->update($update);
         return redirect('/');
     } 
@@ -41,5 +41,3 @@ class TodoController extends Controller
         return redirect('/');
     } 
 }
-
-//

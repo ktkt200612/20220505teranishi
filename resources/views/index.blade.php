@@ -64,13 +64,13 @@
         @foreach ($items as $txt)
       <tr>
         <td>{{ $txt->created_at }}</td>
-        <td><input type="text" value="{{ $txt->content }}" ></td>
-        <td>
-          <form action="/todo/update" method="POST">
-            @csrf
-            <button type="submit" name="update" value="{{$txt->id}}">更新</button>
-          </form>
-        </td>
+        <form action="/todo/update" method="POST">
+          @csrf
+          <td><input type="text" value="{{ $txt->content }}" ></td>
+          <td>
+            <button type="submit" name="update" value="{{$txt}}">更新</button>
+          </td>
+        </form>
         <td>
           <form action="/todo/delete" method="POST">
             @csrf
