@@ -66,9 +66,15 @@
         <td>{{ $txt->created_at }}</td>
         <td><input type="text" value="{{ $txt->content }}" ></td>
         <td>
+          <form action="/todo/update" method="POST">
+            @csrf
+            <button type="submit" name="update" value="{{$txt->id}}">更新</button>
+          </form>
+        </td>
+        <td>
           <form action="/todo/delete" method="POST">
             @csrf
-            <button type="submit" name="delete" value="value">削除</button>
+            <button type="submit" name="delete" value="{{$txt->id}}">削除</button>
           </form>
         </td>
         @endforeach
